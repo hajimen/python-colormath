@@ -77,6 +77,9 @@ class ColorBase(object):
                 return False
         return True
 
+    def __hash__(self) -> int:
+        return hash((getattr(self, n) for n in self.VALUES))
+
 
 class IlluminantMixin(object):
     """
