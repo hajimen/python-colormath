@@ -69,6 +69,14 @@ class ColorBase(object):
             retval += ", illuminant='" + self.illuminant + "'"
         return retval + ")"
 
+    def __eq__(self, other):
+        if type(self) != type(other):
+            return False
+        for v in self.VALUES:
+            if round(getattr(self, v) - getattr(other, v), 3) != 0:
+                return False
+        return True
+
 
 class IlluminantMixin(object):
     """
